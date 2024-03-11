@@ -11,7 +11,7 @@ The module presents downloaded data from PoKemon API on the product list and the
 
 ## Requirements
 - Magento 2
-- Pokemon_CatalogExtension
+- Pokomon_Client
 - Composer
 
 ### Installation
