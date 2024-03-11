@@ -18,7 +18,12 @@ The module presents downloaded data from PoKemon API on the product list and the
 The recommended way to install this extension is via composer:
 
 ```shell
-composer mageami/magento2-pokemon-catalog-extension:v1.0.0
+composer config repositories.mageami-pokemon-catalog git git@github.com:mageami/magento2-pokemon-catalog-extension.git
+composer require mageami/magento2-pokemon-catalog-extension:dev-master
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento c:cl
+php bin/magent c:fl
 ```
 
 #### Change log
