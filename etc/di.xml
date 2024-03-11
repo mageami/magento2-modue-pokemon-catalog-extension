@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Pokemon\CatalogExtension\Service\GetPokemonInterface"
+                type="Pokemon\CatalogExtension\Service\GetPokemon"/>
+    <preference for="Pokemon\CatalogExtension\Api\Data\PokemonInterface"
+                type="Pokemon\CatalogExtension\Model\Pokemon"/>
+
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="pokemon_api_product_repository_plugin"
+                type="Pokemon\CatalogExtension\Plugin\Catalog\ProductRepositoryPlugin"/>
+    </type>
+
+    <type name="Pokemon\CatalogExtension\Model\PokemonCache">
+        <arguments>
+            <argument name="serializer"
+                      xsi:type="object">Pokemon\CatalogExtension\Service\Serializer\Serialize</argument>
+        </arguments>
+    </type>
+
+    <type name="Pokemon\CatalogExtension\Service\Pokemon\PokemonApiManage">
+        <arguments>
+            <argument name="api" xsi:type="object">Pokemon\CatalogExtension\Service\Pokemon\PokemonApi</argument>
+        </arguments>
+    </type>
+
+    <type name="Pokemon\CatalogExtension\Service\GetPokemon">
+        <arguments>
+            <argument name="api" xsi:type="object">Pokemon\CatalogExtension\Service\Pokemon\PokemonApiManage</argument>
+            <argument name="cache" xsi:type="object">Pokemon\CatalogExtension\Service\Pokemon\PokemonCache</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Virtual\CatalogExtension\IdRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">id</argument>
+            <argument name="path" xsi:type="string">id</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\NameRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">name</argument>
+            <argument name="path" xsi:type="string">name</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\WeightRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">weight</argument>
+            <argument name="path" xsi:type="string">weight</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\IsDefaultRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">is_default</argument>
+            <argument name="path" xsi:type="string">is_default</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\HeightRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">height</argument>
+            <argument name="path" xsi:type="string">height</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\BaseExperienceRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">base_experience</argument>
+            <argument name="path" xsi:type="string">base_experience</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\OrderRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">order</argument>
+            <argument name="path" xsi:type="string">order</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\ImageUrlRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">image_url</argument>
+            <argument name="path" xsi:type="string">sprites/front_default</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\SpritesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">sprites</argument>
+            <argument name="path" xsi:type="string">sprites</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\AbilitiesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">abilities</argument>
+            <argument name="path" xsi:type="string">abilities</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\CriesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">cries</argument>
+            <argument name="path" xsi:type="string">cries</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\FormsRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">forms</argument>
+            <argument name="path" xsi:type="string">forms</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\GameIndicesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">game_indices</argument>
+            <argument name="path" xsi:type="string">game_indices</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\GeldItemsRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">held_items</argument>
+            <argument name="path" xsi:type="string">held_items</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\LocationAreaEncountersRetriever"
+                 type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">location_area_encounters</argument>
+            <argument name="path" xsi:type="string">location_area_encounters</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\MovesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">moves</argument>
+            <argument name="path" xsi:type="string">moves</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\PastAbilitiesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">past_abilities</argument>
+            <argument name="path" xsi:type="string">past_abilities</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\PastTypesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">past_types</argument>
+            <argument name="path" xsi:type="string">past_types</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\SpeciesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">species</argument>
+            <argument name="path" xsi:type="string">species</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\StatsRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">stats</argument>
+            <argument name="path" xsi:type="string">stats</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Virtual\CatalogExtension\TypesRetriever" type="Pokemon\Client\Service\FieldRetriever">
+        <arguments>
+            <argument name="fieldName" xsi:type="string">types</argument>
+            <argument name="path" xsi:type="string">types</argument>
+        </arguments>
+    </virtualType>
+    <type name="Pokemon\CatalogExtension\Service\ResponseParser">
+        <arguments>
+            <argument name="fieldRetriever" xsi:type="array">
+                <item name="id" xsi:type="object">Virtual\CatalogExtension\IdRetriever</item>
+                <item name="name" xsi:type="object">Virtual\CatalogExtension\NameRetriever</item>
+                <item name="weight" xsi:type="object">Virtual\CatalogExtension\WeightRetriever</item>
+                <item name="is_default" xsi:type="object">Virtual\CatalogExtension\IsDefaultRetriever</item>
+                <item name="height" xsi:type="object">Virtual\CatalogExtension\HeightRetriever</item>
+                <item name="base_experience" xsi:type="object">Virtual\CatalogExtension\BaseExperienceRetriever</item>
+                <item name="order" xsi:type="object">Virtual\CatalogExtension\OrderRetriever</item>
+                <item name="image_url" xsi:type="object">Virtual\CatalogExtension\ImageUrlRetriever</item>
+                <item name="sprites" xsi:type="object">Virtual\CatalogExtension\SpritesRetriever</item>
+                <item name="abilities" xsi:type="object">Virtual\CatalogExtension\AbilitiesRetriever</item>
+                <item name="cries" xsi:type="object">Virtual\CatalogExtension\CriesRetriever</item>
+                <item name="forms" xsi:type="object">Virtual\CatalogExtension\FormsRetriever</item>
+                <item name="game_indices" xsi:type="object">Virtual\CatalogExtension\GameIndicesRetriever</item>
+                <item name="held_items" xsi:type="object">Virtual\CatalogExtension\GeldItemsRetriever</item>
+                <item name="location_area_encounters"
+                      xsi:type="object">Virtual\CatalogExtension\LocationAreaEncountersRetriever</item>
+                <item name="moves" xsi:type="object">Virtual\CatalogExtension\MovesRetriever</item>
+                <item name="past_types" xsi:type="object">Virtual\CatalogExtension\PastTypesRetriever</item>
+                <item name="species" xsi:type="object">Virtual\CatalogExtension\SpeciesRetriever</item>
+                <item name="stats" xsi:type="object">Virtual\CatalogExtension\StatsRetriever</item>
+                <item name="types" xsi:type="object">Virtual\CatalogExtension\TypesRetriever</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
