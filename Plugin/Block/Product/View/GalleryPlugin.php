@@ -14,6 +14,8 @@ use Magento\Framework\Data\CollectionFactory;
 
 class GalleryPlugin
 {
+    private const POSITION = 100;
+
     /**
      * @param CollectionFactory $dataCollectionFactory
      */
@@ -46,8 +48,8 @@ class GalleryPlugin
                     'row_id' => $imageId,
                     'label' => $productName,
                     'label_default' => $productName,
-                    'position' => 100,
-                    'position_default' => 100,
+                    'position' => self::POSITION,
+                    'position_default' => self::POSITION,
                     'disabled' => 0,
                     'url' => $pokemonImageUrl,
                     'path' => '',

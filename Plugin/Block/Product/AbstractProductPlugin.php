@@ -13,6 +13,12 @@ use Magento\Catalog\Model\Product;
 
 class AbstractProductPlugin
 {
+    private const IMAGE_WIDTH = '240';
+    private const IMAGE_HEIGHT = '300';
+    private const RATIO = '1.25';
+    private const RESIZED_IMAGE_WIDTH = '399';
+    private const RESIZED_IMAGE_HEIGHT = '399';
+
     /**
      * @param AbstractProduct $subject
      * @param Image           $result
@@ -35,13 +41,13 @@ class AbstractProductPlugin
             if ($pokemonImageUrl) {
                 $image = [];
                 $image['image_url'] = $pokemonImageUrl;
-                $image['width'] = "240";
-                $image['height'] = "300";
+                $image['width'] = self::IMAGE_WIDTH;
+                $image['height'] = self::IMAGE_HEIGHT;
                 $image['label'] = $product->getName();
-                $image['ratio'] = "1.25";
-                $image['custom_attributes'] = "";
-                $image['resized_image_width'] = "399";
-                $image['resized_image_height'] = "399";
+                $image['ratio'] = self::RATIO;
+                $image['custom_attributes'] = '';
+                $image['resized_image_width'] = self::RESIZED_IMAGE_WIDTH;
+                $image['resized_image_height'] = self::RESIZED_IMAGE_HEIGHT;
                 $image['custom_attributes'] = [];
                 $image['product_id'] = $product->getId();
                 if ($image) {
