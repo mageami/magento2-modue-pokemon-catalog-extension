@@ -55,7 +55,7 @@ class Pokemon implements PokemonInterface
     /**
      * @inheritDoc
      */
-    public function getAbilities(): array
+    public function getAbilities(): ?array
     {
         return $this->abilities;
     }
