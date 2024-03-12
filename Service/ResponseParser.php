@@ -57,7 +57,7 @@ class ResponseParser
         $pokemon->setId((int)$values['id']);
         $pokemon->setName($values['name'] ?: null);
         $pokemon->setImageUrl($values['image_url'] ?: null);
-        $pokemon->setAbilities($values['abilities']);
+        $pokemon->setAbilities($values['abilities'] ?: null);
         $pokemon->setBaseExperience($values['base_experience'] ?: null);
         $pokemon->setCries($values['cries'] ?: null);
         $pokemon->setForms($values['forms'] ?: null);
