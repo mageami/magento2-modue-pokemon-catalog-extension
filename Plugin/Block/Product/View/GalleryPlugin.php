@@ -42,8 +42,8 @@ class GalleryPlugin
                 $image = [
                     'file' => $pokemonImageUrl,
                     'media_type' => 'image',
-                    'value_id' => $imageId, // unique value
-                    'row_id' => $imageId, // unique value
+                    'value_id' => $imageId,
+                    'row_id' => $imageId,
                     'label' => $productName,
                     'label_default' => $productName,
                     'position' => 100,
