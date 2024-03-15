@@ -36,7 +36,7 @@ class PokemonCache
     public function saveCache(string $name, PokemonInterface $data): bool
     {
         return $this->cache->save(
-            serialize($data),
+            $this->serialize($data),
             $this->getCacheKey($name),
             [Type::CACHE_TAG],
             self::CACHE_LIFE_TIME
@@ -62,6 +62,6 @@ class PokemonCache
     {
         $cachedData = $this->cache->load($this->getCacheKey($name));
 
-        return empty($cachedData) ? null : unserialize($cachedData);
+        return empty($cachedData) ? null : $this->unserialize($cachedData);
     }
 }
